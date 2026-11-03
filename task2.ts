@@ -1,26 +1,26 @@
 
-interface animal {
+interface ShelterAnimal {
     name: string;
     species: "dog"|"cat"|"rabbit"|"guinea pig";
     ageYears: number;
     weightKg: number;
 }
 
-let mittens: animal = {
+let mittens: ShelterAnimal = {
     name: "Mittens",
     species: "cat",
     ageYears: 2,
     weightKg: 4
 };
 
-let Flora: animal = {
+let Flora: ShelterAnimal = {
     name: "Flora",
     species: "rabbit",
     ageYears: 2,
     weightKg: 2
 };
 
-let Arnie: animal = {
+let Arnie: ShelterAnimal = {
     name: "Arnie",
     species: "cat",     // Where field doesn't belong to specified set, error msg tells us which values are allowed
     ageYears: 2,        // Where field missing, error message notifies which field required
