@@ -1,19 +1,19 @@
 // import type { ShelterAnimal } from "./task2";
 function formatChipReading(reading) {
     if (typeof reading === "string") {
-        return `chip number: #${reading} (hand written)`;
+        return "chip number: #".concat(reading, " (hand written)");
     }
-    return `chip number: #${reading}`;
+    return "chip number: #".concat(reading);
 }
 ;
-const chipAnimal = { name: "Chippy", species: "guinea pig", ageYears: 1, weightKg: 0.5, chipNumber: "1234abc" };
+var chipAnimal = { name: "Chippy", species: "guinea pig", ageYears: 1, weightKg: 0.5, chipNumber: "1234abc" };
 console.log(formatChipReading(chipAnimal.chipNumber));
 function describeIntake(intakeRecord) {
     if ("surrenderReason" in intakeRecord) {
-        return `${intakeRecord.name} was surrendered because: ${intakeRecord.surrenderReason}`;
+        return "".concat(intakeRecord.name, " was surrendered because: ").concat(intakeRecord.surrenderReason);
     }
     ;
-    return `${intakeRecord.name} was found at: ${intakeRecord.foundLocation}`;
+    return "".concat(intakeRecord.name, " was found at: ").concat(intakeRecord.foundLocation);
 }
 function isStray(record) {
     return record.surrenderReason === undefined;
@@ -25,20 +25,20 @@ function isUrgentStray(record) {
     }
     return "standard quene";
 }
-let rover = {
+var rover = {
     name: "Rover",
     species: "dog",
     ageYears: 2,
     foundLocation: "Glasgow",
     notes: "Is a good boy"
 };
-let joanna = {
+var joanna = {
     name: "Joanna",
     species: "guinea-pig",
     ageYears: 7,
     surrenderReason: "Anti-social behaviour"
 };
-let roxy = {
+var roxy = {
     name: "Roxy",
     species: "dog",
     ageYears: 3,
