@@ -1,9 +1,16 @@
+"use strict";
 // import type { ShelterAnimal } from "./task2";
+Object.defineProperty(exports, "__esModule", { value: true });
 function formatChipReading(reading) {
     if (typeof reading === "string") {
         return "chip number: #".concat(reading, " (hand written)");
     }
-    return "chip number: #".concat(reading);
+    else if (typeof reading === "number") {
+        return "chip number: #".concat(reading);
+    }
+    else {
+        return "not yet chipped";
+    }
 }
 ;
 var chipAnimal = { name: "Chippy", species: "guinea pig", ageYears: 1, weightKg: 0.5, chipNumber: "1234abc" };
@@ -44,8 +51,16 @@ var roxy = {
     ageYears: 3,
     surrenderReason: "Anti-social behaviour"
 };
-console.log(describeIntake(rover));
-console.log(describeIntake(joanna));
-console.log(isUrgentStray(rover));
-console.log(isUrgentStray(joanna));
-console.log(isUrgentStray(roxy));
+var animalArray = [rover, joanna, roxy];
+var strayArray = animalArray.filter(isStray);
+console.log(strayArray);
+for (var _i = 0, strayArray_1 = strayArray; _i < strayArray_1.length; _i++) {
+    var record = strayArray_1[_i];
+    console.log(record.foundLocation);
+}
+;
+// console.log(describeIntake(rover))
+// console.log(describeIntake(joanna))
+// console.log(isUrgentStray(rover))
+// console.log(isUrgentStray(joanna))
+// console.log(isUrgentStray(roxy))

@@ -5,14 +5,14 @@ interface Microchipped {
 }
 
 
-interface ShelterAnimal {
+export interface ShelterAnimal {
     name: string;
     species: "dog"|"cat"|"rabbit"|"guinea pig";
     ageYears: number;
     weightKg: number;
 }
 
-interface StrayIntake {
+export interface StrayIntake {
   name: string;
   species: "dog" | "cat" | "rabbit" | "guinea-pig";
   ageYears: number;
@@ -20,7 +20,7 @@ interface StrayIntake {
   notes?: string;
 }
 
-interface SurrenderIntake {
+export interface SurrenderIntake {
   name: string;
   species: "dog" | "cat" | "rabbit" | "guinea-pig";
   ageYears: number;
@@ -28,18 +28,21 @@ interface SurrenderIntake {
   notes?: string;
 }
 
-type IntakeRecord = StrayIntake | SurrenderIntake;
+export type IntakeRecord = StrayIntake | SurrenderIntake;
 
-type TraceableAnimal = ShelterAnimal & Microchipped;
+export type TraceableAnimal = ShelterAnimal & Microchipped;
 
-type IntakePriority = 1 | 2 |3;
+export type IntakePriority = 1 | 2 |3;
 
 
 function formatChipReading(reading: number|string) {
     if (typeof reading === "string") {
         return `chip number: #${reading} (hand written)`;
     }
+    else if (typeof reading === "number") {
     return `chip number: #${reading}`;
+    }
+    else {return "not yet chipped"}
 };
 
 const chipAnimal: TraceableAnimal = {name: "Chippy", species: "guinea pig", ageYears: 1, weightKg: 0.5, chipNumber: "1234abc"};
@@ -51,7 +54,7 @@ function describeIntake(intakeRecord: IntakeRecord) {
     return `${intakeRecord.name} was found at: ${intakeRecord.foundLocation}`;
 }
 
-function isStray(record: IntakeRecord): boolean {
+function isStray(record: IntakeRecord): record is StrayIntake {
   return (record as SurrenderIntake).surrenderReason === undefined;
   };
 
@@ -61,6 +64,7 @@ function isUrgentStray(record: IntakeRecord): string {
   }
   return "standard quene";
 }
+
 
 
 
@@ -76,7 +80,7 @@ let joanna: SurrenderIntake = {
   name: "Joanna",
   species: "guinea-pig",
   ageYears: 7,
-  surrenderReason: "Anti-social behaviour"
+  surrenderReason: "Anti-social behaviour" 
 }
 
 let roxy: SurrenderIntake = {
@@ -86,8 +90,15 @@ let roxy: SurrenderIntake = {
   surrenderReason: "Anti-social behaviour"
 }
 
-console.log(describeIntake(rover))
-console.log(describeIntake(joanna))
-console.log(isUrgentStray(rover))
-console.log(isUrgentStray(joanna))
-console.log(isUrgentStray(roxy))
+let animalArray = [rover,joanna,roxy]
+
+let strayArray: StrayIntake[] = animalArray.filter(isStray)
+
+console.log(strayArray)
+for (const record of strayArray) {console.log(record.foundLocation)};
+
+// console.log(describeIntake(rover))
+// console.log(describeIntake(joanna))
+// console.log(isUrgentStray(rover))
+// console.log(isUrgentStray(joanna))
+// console.log(isUrgentStray(roxy))

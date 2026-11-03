@@ -2,11 +2,13 @@ type IntakePriority = 1 | 2 |3;
 
 let urgent: IntakePriority = 1
 
-let notNotUrgent: IntakePriority = 4 // doesn't list vaild assignable in error message 
+// let notNotUrgent: IntakePriority = 4 // doesn't list vaild assignable in error message 
 
 interface Microchipped {
-    chipNumber: string;
+    chipNumber: string|number|undefined;
 }
+
+
 
 
 interface ShelterAnimal {
