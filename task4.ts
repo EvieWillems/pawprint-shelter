@@ -1,16 +1,16 @@
-import type { ShelterAnimal } from "./task2";
+// import type { ShelterAnimal } from "./task2";
 
 interface Microchipped {
     chipNumber: string;
 }
 
 
-// interface ShelterAnimal {
-//     name: string;
-//     species: "dog"|"cat"|"rabbit"|"guinea pig";
-//     ageYears: number;
-//     weightKg: number;
-// }
+interface ShelterAnimal {
+    name: string;
+    species: "dog"|"cat"|"rabbit"|"guinea pig";
+    ageYears: number;
+    weightKg: number;
+}
 
 interface StrayIntake {
   name: string;
@@ -51,6 +51,19 @@ function describeIntake(intakeRecord: IntakeRecord) {
     return `${intakeRecord.name} was found at: ${intakeRecord.foundLocation}`;
 }
 
+function isStray(record: IntakeRecord): boolean {
+  return (record as SurrenderIntake).surrenderReason === undefined;
+  };
+
+function isUrgentStray(record: IntakeRecord): string {
+  if (isStray(record) && record.species === "dog") {
+    return "prioritise";
+  }
+  return "standard quene";
+}
+
+
+
 let rover: StrayIntake = {
   name: "Rover",
   species: "dog",
@@ -66,6 +79,15 @@ let joanna: SurrenderIntake = {
   surrenderReason: "Anti-social behaviour"
 }
 
-console.log(describeIntake(rover))
+let roxy: SurrenderIntake = {
+  name: "Roxy",
+  species: "dog",
+  ageYears: 3,
+  surrenderReason: "Anti-social behaviour"
+}
 
+console.log(describeIntake(rover))
 console.log(describeIntake(joanna))
+console.log(isUrgentStray(rover))
+console.log(isUrgentStray(joanna))
+console.log(isUrgentStray(roxy))
