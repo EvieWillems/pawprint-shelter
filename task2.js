@@ -1,19 +1,22 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var mittens = {
     name: "Mittens",
     species: "cat",
-    ageWholeYears: 2,
+    ageYears: 2,
     weightKg: 4
 };
 var Flora = {
     name: "Flora",
     species: "rabbit",
-    ageWholeYears: 2,
+    ageYears: 2,
     weightKg: 2
 };
 var Arnie = {
     name: "Arnie",
-    species: "cat",
-    ageWholeYears: 2,
+    species: "cat", // Where field doesn't belong to specified set, error msg tells us which values are allowed
+    ageYears: 2, // Where field missing, error message notifies which field required
+    weightKg: 2 // Where field is wrong type, error msg tells us allowed types
 };
 // a name,
 // a species restricted to exactly dog, cat, rabbit, or guinea pig,

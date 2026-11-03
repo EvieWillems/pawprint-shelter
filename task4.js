@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function formatChipReading(reading) {
     if (typeof reading === "string") {
         return "chip number: #".concat(reading, " (hand written)");

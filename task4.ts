@@ -1,16 +1,16 @@
-
+import type { ShelterAnimal } from "./task2";
 
 interface Microchipped {
     chipNumber: string;
 }
 
 
-interface ShelterAnimal {
-    name: string;
-    species: "dog"|"cat"|"rabbit"|"guinea pig";
-    ageYears: number;
-    weightKg: number;
-}
+// interface ShelterAnimal {
+//     name: string;
+//     species: "dog"|"cat"|"rabbit"|"guinea pig";
+//     ageYears: number;
+//     weightKg: number;
+// }
 
 interface StrayIntake {
   name: string;
